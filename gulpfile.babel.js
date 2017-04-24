@@ -81,7 +81,7 @@ function pages() {
       use: [
 
         metalsmithPath({
-          "property": "path",
+          "property": "path"
         }),
         metalsmithMatters({
           '_enable': true,
