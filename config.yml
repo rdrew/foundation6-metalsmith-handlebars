@@ -58,7 +58,11 @@ PATHS:
     - "bower_components/foundation-sites/js/foundation.tabs.js"
     - "bower_components/foundation-sites/js/foundation.toggler.js"
     - "bower_components/foundation-sites/js/foundation.tooltip.js"
-    - "bower_components/foundation-sites/js/foundation.zf.responsiveAccordionTabs.js"
+    - "bower_components/foundation-sites/js/foundation.plugin.js"
+    - "bower_components/foundation-sites/js/foundation.positionable.js"
+    - "bower_components/foundation-sites/js/foundation.responsiveAccordionTabs.js"
+    - "bower_components/foundation-sites/js/foundation.smoothScroll.js"
+
     # Plugins
     - "bower_components/lazysizes/lazysizes.min.js"
     - "bower_components/sweetalert/dist/sweetalert.min.js"
