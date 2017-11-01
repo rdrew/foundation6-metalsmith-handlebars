@@ -13,8 +13,8 @@ touch assets/scss/components/_$componentName.scss
 echo "Created _$componentName.scss"
 
 #add to scss/_init
-echo "// added automatically by 'addComponent' script" >> ../src/assets/scss/_init.scss 
-echo "@import 'components/$componentName';" >> ../src/assets/scss/_init.scss 
+echo "// added automatically by 'addComponent' script" >> assets/scss/app.scss 
+echo "@import 'components/$componentName';" >> assets/scss/app.scss 
 echo "initalized the sass partial"
 
 echo "Done :-)"
