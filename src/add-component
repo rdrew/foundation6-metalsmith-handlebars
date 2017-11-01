@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+#get the vars
+echo "Name of new component"
+read componentName
+
+#make template partial
+touch layouts/partials/$componentName.html
+echo "Created $componentName.html"
+
+#make Sass partial
+touch assets/scss/components/_$componentName.scss
+echo "Created _$componentName.scss"
+
+#add to scss/_init
+echo "// added automatically by 'addComponent' script" >> ../src/assets/scss/_init.scss 
+echo "@import 'components/$componentName';" >> ../src/assets/scss/_init.scss 
+echo "initalized the sass partial"
+
+echo "Done :-)"
+
