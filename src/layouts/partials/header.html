@@ -1,26 +1,33 @@
 <nav class="top-bar topbar-responsive">
-  <div class="top-bar-title">
-    <span data-responsive-toggle="topbar-responsive" data-hide-for="medium">
-      <button class="menu-icon" type="button" data-toggle></button>
-    </span>
-    <a class="topbar-responsive-logo" href="#"><strong>Site Title</strong></a>
-  </div>
-  <div id="topbar-responsive" class="topbar-responsive-links">
-    <div class="top-bar-right">
-      <ul class="menu simple vertical medium-horizontal">
+<div class="top-bar-left">
+    <ul class="menu">
+        <li>
+            <img class="site_logo" src="{{root}}/assets/img/white_svg_upei_logo.svg" alt="">
+        </li>
+        <li>
+            <h1 class="site-title">
+                {{ site_title }}
+            </h1>
+        </li>
 
-          {{#each pages }}
-          <li>
-              <div class="title"><a href="{{root}}/{{ path }}">{{ title }}</a></div>
-              <!--<div class="date">{{ date }}</div>-->
-          </li>
-          {{/each}}
+    </ul>
+</div>
+
+<div class="top-bar-right">
+    <ul class="menu simple vertical medium-horizontal">
+
+        {{#each pages }}
+        <li>
+            <div class="title"><a href="{{root}}/{{ path }}">{{ title }}</a></div>
+            <!--<div class="date">{{ date }}</div>-->
+        </li>
+        {{/each}}
 
         <li>
-          <button type="button" class="button hollow topbar-responsive-button">Categories</button>
+            <button type="button" class="button hollow topbar-responsive-button">Categories</button>
         </li>
-      </ul>
-    </div>
-  </div>
+    </ul>
+</div>
+
 </nav>
 

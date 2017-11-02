@@ -143,7 +143,7 @@ const logFilesMap = function(files, metalsmith, done) {
 
       // Initial Metalsmith metadata, defaults to {}
       metadata: {
-        site_title: 'Sample static site'
+        site_title: 'Robertson Library'
       },
       // List of JSON files that contain page definitions
       // true means "all JSON files", see the section below
