@@ -15,6 +15,7 @@ import metalsmithMarkdown from 'metalsmith-markdown';
 import metalsmithMatters from 'metalsmith-matters';
 import metalsmithCollections from 'metalsmith-collections';
 import metalsmithPath from 'metalsmith-paths';
+import permalinks from 'metalsmith-permalinks';
 
 import Handlebars from 'handlebars';
 require('./src/helpers/handlebars-helper.js')(Handlebars);
@@ -41,6 +42,7 @@ function loadConfig() {
   return yaml.load(ymlFile);
 }
 
+
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
   gulp.series(clean, gulp.parallel(pages, sass, gulp.series(javascript), images, copy), inlineSource, styleGuide));
@@ -64,31 +66,55 @@ function copy() {
 
 
 function pages() {
+
+
+
+// metalsmith debugger
+const logFilesMap = function(files, metalsmith, done) {
+    Object.keys(files).forEach(function (file) {
+        var fileObject = files[file];
+
+        console.log("key -------> ", file);
+        console.log("value -----> ", fileObject);
+    });
+};
   return gulp.src('src/pages/**')
     .pipe(metalsmith({
-      // Metalsmith's root directory, for example for locating templates, defaults to CWD 
+      // Metalsmith's root directory, for example for locating templates, defaults to CWD
       root: __dirname,
-      // Files to exclude from the build 
+      // Files to exclude from the build
       ignore: ['src/*.tmp'],
-      // Parsing frontmatter, defaults to true 
+      // Parsing frontmatter, defaults to true
       frontmatter: false,
-      // Metalsmith plugins to use: 
+      // Metalsmith plugins to use:
       source: '/src/pages',
-      clean: false,
+      clean: true,
 
       destination: '/dist',
 
       use: [
 
-        metalsmithPath({
-          "property": "path"
-        }),
+
         metalsmithMatters({
           '_enable': true,
           'delims': ['---json', '---'],
           'options': {
             'lang': 'json'
           }
+        }),
+        //metalsmithPath({
+          //"property": "path"
+        //}),
+        metalsmithCollections({
+            //posts: 'pages/*.md',
+            pages: {
+                pattern: 'content/*.md',
+                sortBy: 'priority'
+            },
+            blog: {
+                pattern: 'blog/*.md',
+                sortBy: 'date'
+            }
         }),
         metalsmithMarkdown({
           '_enable': true,
@@ -97,22 +123,25 @@ function pages() {
           'gfm': true,
           'tables': true
         }),
+          permalinks({
+              pattern: ':collections/:title'
+          }),
         metalsmithLayouts({
           'engine': 'handlebars',
           'directory': 'src/layouts/',
           'partials': 'src/layouts/partials/'
-        }),
-        metalsmithCollections({
-          posts: 'pages/*.md'
         })
+        //logFilesMap,
+        //logFilesMap
 
       ],
-      // Initial Metalsmith metadata, defaults to {} 
+
+      // Initial Metalsmith metadata, defaults to {}
       metadata: {
         site_title: 'Sample static site'
       },
-      // List of JSON files that contain page definitions 
-      // true means "all JSON files", see the section below 
+      // List of JSON files that contain page definitions
+      // true means "all JSON files", see the section below
       json: ['src/pages.json']
 
     }))

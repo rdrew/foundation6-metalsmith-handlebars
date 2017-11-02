@@ -6,14 +6,32 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Foundation for Sites</title>
-        <link rel="stylesheet" href="assets/css/app.css">
+        <link rel="stylesheet" href="{{root}}/assets/css/app.css">
     </head>
 
     <body>
-        
-        {{{ contents }}}
+        {{> header}}
+        {{> navigation }}
 
-        <script src="assets/js/app.js"></script>
+        <div class="grid-container">
+
+            {{priority}}
+<ul class="recent">
+    {{#each blog }}
+      <li>
+          <div class="title"><a href="{{root}}/{{ path }}">{{ title }}</a></div>
+        <!--<div class="date">{{ date }}</div>-->
+      </li>
+    {{/each}}
+    </ul>
+
+            {{{ contents }}}
+            {{> sidebar }}
+        </div>
+
+        {{> footer }}
+
+        <script src="{{root}}/assets/js/app.js"></script>
     </body>
 
 </html>

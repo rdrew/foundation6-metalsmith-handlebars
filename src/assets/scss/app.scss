@@ -5,6 +5,7 @@
 @import 'motion-ui';
 
 @include foundation-global-styles;
+@include foundation-xy-grid-classes;
 // @include foundation-grid;
 @include foundation-flex-grid;
 @include foundation-typography;
@@ -88,3 +89,6 @@
 
 
 
+// added automatically by 'addComponent' script
+// added automatically by 'addComponent' script
+@import 'components/test3';
