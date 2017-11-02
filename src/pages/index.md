@@ -1,11 +1,9 @@
----json
-{
-    "title": "EasyWebHub Home",
-    "slug": "",
-    "description": "Index Page",
-    "layout": "index.html",
-    "permalink" : false
-}
+---
+title: Index Page
+slug: 
+description: Index Page
+layout: index.html
+permalink : false
 ---
 
 

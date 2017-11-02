@@ -97,10 +97,15 @@ const logFilesMap = function(files, metalsmith, done) {
 
         metalsmithMatters({
           '_enable': true,
-          'delims': ['---json', '---'],
+          'delims': ['---', '---'],
           'options': {
-            'lang': 'json'
+            'lang': 'yaml'
           }
+          //'_enable': true,
+          //'delims': ['---json', '---'],
+          //'options': {
+            //'lang': 'json'
+          //}
         }),
         //metalsmithPath({
           //"property": "path"
